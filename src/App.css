@@ -32,6 +32,9 @@
   margin-top: 20px;
   margin-bottom: 20px;
   width:60%;
-  height: fit-content;
-  border:solid white 3px;
+  height: auto;
+}
+
+Button{
+  left: 20px;
 }
