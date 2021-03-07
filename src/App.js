@@ -2,6 +2,7 @@ import './App.css';
 import React, {useState} from 'react'
 import DatePickers from './date.js'
 import { Button } from '@material-ui/core';
+import styled from 'styled-components'
 
 function App() {
   const [pic, setPic] = useState(null)
@@ -17,13 +18,17 @@ function App() {
     const r = await fetch(url)
     const j = await r.json()
     console.log(j)
-    setPic(j.url)
+    if (j.url){
+      setPic(j.url)
+    }
   }
+
+  console.log(pic)
 
   return (
   <div className="App">
       <header className="App-header">
-        <div className="head-text">Astronomy Picture of the Day</div>
+        <div className="head-text"><strong>Astronomy Picture of the Day</strong></div>
       </header>
       <div className="form">
         <DatePickers date={date} setDate={setDate} />
@@ -33,9 +38,20 @@ function App() {
         <img className="media" src={pic} alt=""></img>
       </div>
 
+      {pic===null && <Empty>
+        Media not found ☹️  
+      </Empty>}
+
+
   </div>
   );
 }
 
+const Empty = styled.p`
+  width:100%;
+  font-size:1.2rem;
+  color:white;
+  text-align:center;
+`
 
 export default App;
