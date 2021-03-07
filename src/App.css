@@ -35,8 +35,24 @@
   width:60%;
   height: auto;
   border:none;
+  height: ;
 }
 
 Button{
   left: 20px;
+}
+
+.videoWrapper {
+  display: flex;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  justify-content: center;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  
+  width: 90%;
+  height: 90%;
 }

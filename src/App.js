@@ -46,9 +46,9 @@ function App() {
         {!loading && pic!=null && !pic.includes('youtube') && 
         <img className="media" src={pic} alt=""></img>}
 
-        {!loading && pic!=null && pic.includes('youtube') && <iframe width="420" height="315"
-          src={pic}>
-        </iframe>}
+        {!loading && pic!=null && pic.includes('youtube') && <div class="videoWrapper"><iframe width="420" height="315" frameborder="0"
+          title="APOD video" src={pic} allow="fullscreen; accelerometer; autoplay; encrypted-media; gyroscope;"> 
+        </iframe></div>}
   
       </div>
 
