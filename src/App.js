@@ -9,6 +9,9 @@ function App() {
   const [pic, setPic] = useState(null)
   const [date, setDate] = useState('')
   const [loading, setLoading] = useState(false)
+  const [title, setTitle] = useState('')
+  const [explanation, setExplanation] = useState('')
+
 
   async function getPic(){
     setPic(null)
@@ -22,6 +25,8 @@ function App() {
     console.log(j)
     if (j.url){
       setPic(j.url)
+      if (j.title) {setTitle(j.title)}
+      if (j.explanation) {setExplanation(j.explanation)}
     } else{
       setPic('')
     }
@@ -43,17 +48,22 @@ function App() {
       {loading && <LinearProgress />}
 
       <div className="result">
+        <p>
+        {!loading && pic && title!=='' && <Text1>{title}</Text1>}
+        {!loading && pic && explanation!=='' && <Text2>{explanation}</Text2>}
+        </p>
+
         {!loading && pic!=null && !pic.includes('youtube') && 
         <img className="media" src={pic} alt=""></img>}
 
-        {!loading && pic!=null && pic.includes('youtube') && <div class="videoWrapper"><iframe width="420" height="315" frameborder="0"
-          title="APOD video" src={pic} allow="fullscreen; accelerometer; autoplay; encrypted-media; gyroscope;"> 
-        </iframe></div>}
+        {!loading && pic!=null && pic.includes('youtube') && <div class="videoWrapper"><iframe width="420" height="315" frameborder="0" 
+        title="APOD video" src={pic} allow="fullscreen; accelerometer; autoplay; encrypted-media; gyroscope;"></iframe></div>}
+
   
       </div>
 
       {!loading && pic==='' && <Empty>
-        Media not found ☹️  
+        Media not found  ☹️  
       </Empty>}
 
 
@@ -67,7 +77,22 @@ const Empty = styled.p`
   color:white;
   text-align:center;
 `
+const Text1 = styled.p`
+  width:90%;
+  color:white;
+  text-align:left;
+  font-weight:bold;
+  font-size:1rem;
+`
 
+const Text2 = styled.p`
+  width:90%;
+  color:#d9d9d9;
+  text-align:left;
+  margin-bottom:10px;
+  font-size:0.8rem;
+  
+`
 
 
 export default App;

@@ -32,10 +32,9 @@
 .media{
   margin-top: 20px;
   margin-bottom: 20px;
-  width:60%;
+  width:90%;
   height: auto;
   border:none;
-  height: ;
 }
 
 Button{
@@ -49,10 +48,19 @@ Button{
   height: 0;
   justify-content: center;
 }
+
 .videoWrapper iframe {
   position: absolute;
   top: 0;
-  
   width: 90%;
   height: 90%;
+}
+
+p{
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
