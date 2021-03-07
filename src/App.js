@@ -12,7 +12,6 @@ function App() {
   async function getPic(){
     setPic(null)
     let url = 'https://api.nasa.gov/planetary/apod?'
-    const date = DatePickers.date
     url += 'date=' + DatePickers.date
     url += '&api_key=QAXu9IAzUdi0kHAfGgqJittdWJSHUP2MvjZuiTiT'
     console.log(url)
