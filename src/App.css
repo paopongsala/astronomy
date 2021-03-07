@@ -25,6 +25,7 @@
   display: flex;
   justify-content: center;
   margin-top:3rem ;
+  margin-bottom: 3rem;
 
 }
 
@@ -33,6 +34,7 @@
   margin-bottom: 20px;
   width:60%;
   height: auto;
+  border:none;
 }
 
 Button{

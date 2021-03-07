@@ -3,14 +3,16 @@ import React, {useState} from 'react'
 import DatePickers from './date.js'
 import { Button } from '@material-ui/core';
 import styled from 'styled-components'
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 function App() {
   const [pic, setPic] = useState(null)
   const [date, setDate] = useState('')
-  
+  const [loading, setLoading] = useState(false)
 
   async function getPic(){
     setPic(null)
+    setLoading(true)
     let url = 'https://api.nasa.gov/planetary/apod?'
     url += 'date=' + date
     url += '&api_key=QAXu9IAzUdi0kHAfGgqJittdWJSHUP2MvjZuiTiT'
@@ -20,7 +22,10 @@ function App() {
     console.log(j)
     if (j.url){
       setPic(j.url)
+    } else{
+      setPic('')
     }
+    setLoading(false)
   }
 
   console.log(pic)
@@ -34,11 +39,20 @@ function App() {
         <DatePickers date={date} setDate={setDate} />
         <Button variant="contained" color="primary" onClick={getPic}>Search</Button>
       </div>
+
+      {loading && <LinearProgress />}
+
       <div className="result">
-        <img className="media" src={pic} alt=""></img>
+        {!loading && pic!=null && !pic.includes('youtube') && 
+        <img className="media" src={pic} alt=""></img>}
+
+        {!loading && pic!=null && pic.includes('youtube') && <iframe width="420" height="315"
+          src={pic}>
+        </iframe>}
+  
       </div>
 
-      {pic===null && <Empty>
+      {!loading && pic==='' && <Empty>
         Media not found ☹️  
       </Empty>}
 
@@ -53,5 +67,7 @@ const Empty = styled.p`
   color:white;
   text-align:center;
 `
+
+
 
 export default App;
