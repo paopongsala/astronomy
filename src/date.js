@@ -19,7 +19,7 @@ export default function DatePickers() {
   const classes = useStyles();
   const [date, setDate] = React.useState('')
 
-  var handleDateChange = (event) => {
+  const handleDateChange = (event) => {
     console.log(event.target.value)
     setDate(event.target.value);
     console.log(date)
