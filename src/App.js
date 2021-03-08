@@ -12,12 +12,50 @@ function App() {
   const [title, setTitle] = useState('')
   const [explanation, setExplanation] = useState('')
 
+  function getPreviousDate(){
+    var currentday = date
+    console.log(currentday)
+    currentday = new Date( currentday.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
+    console.log(currentday)
+    currentday.setDate(currentday.getDate()-1)
+    currentday = currentday.toISOString().split('T')[0]
+    console.log(currentday)
+    setDate(currentday)
 
-  async function getPic(){
+    getPic(currentday)
+  }
+
+  function getNextDate(){
+    var currentday = date
+    console.log(currentday)
+    currentday = new Date( currentday.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
+    console.log(currentday)
+    currentday.setDate(currentday.getDate()+1)
+    currentday = currentday.toISOString().split('T')[0]
+    console.log(currentday)
+    setDate(currentday)
+
+    getPic(currentday)
+  }
+
+  function getDate(){
+    var currentday = date
+    console.log(currentday)
+    currentday = new Date( currentday.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
+    console.log(currentday)
+    currentday = currentday.toISOString().split('T')[0]
+    console.log(currentday)
+    setDate(currentday)
+
+    getPic(currentday)
+  }
+
+
+  async function getPic(currentday){
     setPic(null)
     setLoading(true)
     let url = 'https://api.nasa.gov/planetary/apod?'
-    url += 'date=' + date
+    url += 'date=' + currentday
     url += '&api_key=QAXu9IAzUdi0kHAfGgqJittdWJSHUP2MvjZuiTiT'
     console.log(url)
     const r = await fetch(url)
@@ -37,13 +75,14 @@ function App() {
 
   return (
   <div className="App">
+  
       <header className="App-header">
-
+    
       <div class="dropdown">
         <span className="info">ⓘ</span>
         <div class="dropdown-content">
           <p>Search for NASA's fabulous Astronomy pictures/videos from any day. Search result also comes
-            with a description for those who are interested in learning about space!<br/>Built with React.<br/>
+            with a description for those who are interested in learning about space!<br/>Built with React and NASA APOD API.<br/>
             Pao Pongsala (2021)
           </p>
         </div>
@@ -55,7 +94,7 @@ function App() {
       </header>
       <div className="form">
         <DatePickers date={date} setDate={setDate} />
-        <Button variant="contained" color="primary" onClick={getPic}>Search</Button>
+        <Button className="search" variant="contained" color="primary" onClick={getDate}>Search</Button>
       </div>
 
       {loading && <LinearProgress />}
@@ -66,10 +105,10 @@ function App() {
         {!loading && pic && explanation!=='' && <Text2>{explanation}</Text2>}
         </p>
 
-        {!loading && pic!=null && !pic.includes('youtube') && 
+        {!loading && pic!=null && !pic.includes('youtube') && !pic.includes('vimeo') &&
         <img className="media" src={pic} alt=""></img>}
 
-        {!loading && pic!=null && pic.includes('youtube') && <div class="videoWrapper"><iframe width="420" height="315" frameborder="0" 
+        {!loading && pic!=null && (pic.includes('youtube')||pic.includes('vimeo')) && <div class="videoWrapper"><iframe width="420" height="315" frameborder="0" 
         title="APOD video" src={pic} allow="fullscreen; accelerometer; autoplay; encrypted-media; gyroscope;"></iframe></div>}
 
   
@@ -79,6 +118,13 @@ function App() {
         Media not found  ☹️  
       </Empty>}
 
+      {pic!=null && <button className="move" id="before" onClick={getPreviousDate}>
+            ←
+            </button>}
+
+      {pic !=null && <button className="move" id="after" onClick={getNextDate}>
+            →
+            </button>}
 
   </div>
   );

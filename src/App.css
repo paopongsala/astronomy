@@ -69,7 +69,7 @@
   border:none;
 }
 
-Button{
+.search{
   left: 20px;
 }
 
@@ -95,4 +95,37 @@ Button{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.move{
+  position: sticky;
+  bottom: 20px;
+  margin-bottom: 20px;
+
+  font-size: 1rem;
+  color:white;
+  background-color: transparent;
+  border: white solid 1px;
+  padding: 10px 20px
+}
+
+.move:focus{
+  outline: none;
+}
+
+.move:hover{
+  cursor: pointer;
+}
+
+
+#before:active{
+  transform: translateX(-5px);
+  background-color: white;
+  color:black;
+}
+
+#after:active{
+  transform: translateX(5px);
+  background-color: white;
+  color:black;
 }
