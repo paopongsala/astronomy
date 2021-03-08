@@ -38,6 +38,19 @@ function App() {
   return (
   <div className="App">
       <header className="App-header">
+
+      <div class="dropdown">
+        <span className="info">ⓘ</span>
+        <div class="dropdown-content">
+          <p>Search for NASA's fabulous Astronomy pictures/videos from any day. Search result also comes
+            with a description for those who are interested in learning about space!<br/>Built with React.<br/>
+            Pao Pongsala (2021)
+          </p>
+        </div>
+      </div>
+
+
+
         <div className="head-text"><strong>Astronomy Picture of the Day</strong></div>
       </header>
       <div className="form">
@@ -48,7 +61,7 @@ function App() {
       {loading && <LinearProgress />}
 
       <div className="result">
-        <p>
+        <p className="texts">
         {!loading && pic && title!=='' && <Text1>{title}</Text1>}
         {!loading && pic && explanation!=='' && <Text2>{explanation}</Text2>}
         </p>
