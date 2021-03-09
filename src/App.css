@@ -57,7 +57,7 @@
   display: flex;
   justify-content: center;
   margin-top:3rem ;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 
 }
 
@@ -130,12 +130,53 @@
   color:black;
 }
 
-.range{
-  color:white;
-  border:white 2px soild;
+div label input {
+  margin-right:100px;
+}
+body {
+   font-family:sans-serif;
+}
+
+#ck-button {
+   margin:4px;
+   background-color:transparent;
+   color: rgb(172, 172, 172);
+   border:none;
+   overflow:auto;
+   float:left;
+   padding: 4px;
+}
+
+#ck-button:hover {
+   background:rgb(68, 59, 204);
+   padding: 4px;
+   cursor: pointer;
+}
+
+#ck-button label {
+   float:left;
+   width:fit-content;
+}
+
+#ck-button label span {
+   text-align:center;
+   padding:3px 0px;
+   display:block;
+}
+
+#ck-button label input {
+   position:absolute;
+   top:-20px;
+}
+
+#ck-button input:checked + span {
+   background-color:rgb(68, 59, 204);
+   color:#fff;
+   padding: 4px;
 }
 
 .display{
-  background-color: transparent;
-  border-right:white solid 2px;
+  width:100%;
+  display: flex;
+  justify-content: center;
 }

@@ -4,6 +4,12 @@ import DatePickers from './date.js'
 import { Button } from '@material-ui/core';
 import styled from 'styled-components'
 import LinearProgress from '@material-ui/core/LinearProgress';
+import $ from 'jquery';
+
+
+$('input.example').on('change', function() {
+  $('input.example').not(this).prop('checked', false);  
+});
 
 function App() {
   const [pic, setPic] = useState(null)
@@ -94,12 +100,21 @@ function App() {
       </header>
       <div className="form">
         <DatePickers date={date} setDate={setDate} />
-        <Button className="search" variant="contained" color="primary" onClick={getDate}>Search</Button>
+        <Button className="search" variant="contained" color="primary" onClick={getDate} disabled={!date || loading}>Search</Button>
       </div>
 
-      <button className="display">Vertical</button>
-      <button className="display">Horizontal</button>
-     
+      <div className="display">
+        <div id="ck-button">
+          <label>
+              <input type="checkbox" value="1" className="example"/><span>Vertical</span>
+          </label>
+        </div>
+        <div id="ck-button">
+          <label>
+              <input type="checkbox" value="1" className="example"/><span>Horizontal</span>
+          </label>
+        </div>
+      </div>
 
 
       {loading && <LinearProgress />}
