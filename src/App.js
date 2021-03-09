@@ -26,6 +26,7 @@ function App() {
     setHorizontal(true)
   };
 
+
   function getPreviousDate(){
     var currentday = date
     console.log(currentday)
@@ -97,7 +98,7 @@ function App() {
         <div class="dropdown-content">
           <p>Search for NASA's fabulous Astronomy pictures/videos from any day. Search result also comes
             with a description for those who are interested in learning about space!<br/>Built with React and NASA APOD API.<br/>
-            Pao Pongsala (2021)
+            <br/>Pao Pongsala (2021)<br/>https://paopongsala.myportfolio.com
           </p>
         </div>
       </div>
@@ -130,7 +131,7 @@ function App() {
 
       {loading && <LinearProgress />}
 
-      <div className="result">
+      <div className="result" style={{flexDirection: vertical? 'column' : 'row'}}>
         <p className="texts">
         {!loading && pic && title!=='' && <Text1>{title}</Text1>}
         {!loading && pic && explanation!=='' && <Text2>{explanation}</Text2>}
@@ -139,7 +140,7 @@ function App() {
         {!loading && pic!=null && !pic.includes('youtube') && !pic.includes('vimeo') &&
         <img className="media" src={pic} alt=""></img>}
 
-        {!loading && pic!=null && (pic.includes('youtube')||pic.includes('vimeo')) && <div class="videoWrapper"><iframe width="420" height="315" frameborder="0" 
+        {!loading && pic!=null && (pic.includes('youtube')||pic.includes('vimeo')) && <div class="videoWrapper"><iframe style={{height: vertical? '30rem' : '15rem'}} width="420" height="315" frameborder="0" 
         title="APOD video" src={pic} allow="fullscreen; accelerometer; autoplay; encrypted-media; gyroscope;"></iframe></div>}
 
   

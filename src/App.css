@@ -62,9 +62,8 @@
 }
 
 .media{
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width:90%;
+  margin: 20px;
+  width:50%;
   height: auto;
   border:none;
 }
@@ -74,18 +73,16 @@
 }
 
 .videoWrapper {
+  width: 100%;
+  height: fit-content;
   display: flex;
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
+  background-color: transparent;
   justify-content: center;
 }
 
 .videoWrapper iframe {
-  position: absolute;
-  top: 0;
-  width: 90%;
-  height: 90%;
+  width: 95%;
+  position: relative;
 }
 
 .texts{
@@ -179,4 +176,10 @@ body {
   width:100%;
   display: flex;
   justify-content: center;
+}
+
+.result{
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
