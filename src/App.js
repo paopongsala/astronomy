@@ -98,7 +98,7 @@ function App() {
         <div class="dropdown-content">
           <p>Search for NASA's fabulous Astronomy pictures/videos from any day. Search result also comes
             with a description for those who are interested in learning about space!<br/>Built with React and NASA APOD API.<br/>
-            <br/>Pao Pongsala (2021)<br/>https://paopongsala.myportfolio.com
+            <br/>Pao Pongsala (2021)<br/><a href="https://paopongsala.myportfolio.com" target="_blank" rel="noreferrer">https://paopongsala.myportfolio.com </a>
           </p>
         </div>
       </div>
@@ -137,8 +137,9 @@ function App() {
         {!loading && pic && explanation!=='' && <Text2>{explanation}</Text2>}
         </p>
 
-        {!loading && pic!=null && !pic.includes('youtube') && !pic.includes('vimeo') &&
-        <img className="media" src={pic} alt=""></img>}
+        {!loading && pic!=null && pic!=='' && !pic.includes('youtube') && !pic.includes('vimeo') &&
+        <div><img className="media" src={pic} alt=""/><Img><figcaption><a href={pic} target="_blank" rel="noreferrer">Source:{pic}</a></figcaption></Img></div>}
+  
 
         {!loading && pic!=null && (pic.includes('youtube')||pic.includes('vimeo')) && <div class="videoWrapper"><iframe style={{height: vertical? '30rem' : '15rem'}} width="420" height="315" frameborder="0" 
         title="APOD video" src={pic} allow="fullscreen; accelerometer; autoplay; encrypted-media; gyroscope;"></iframe></div>}
@@ -169,7 +170,7 @@ const Empty = styled.p`
   text-align:center;
 `
 const Text1 = styled.p`
-  width:90%;
+  width:80%;
   color:white;
   text-align:left;
   font-weight:bold;
@@ -177,7 +178,7 @@ const Text1 = styled.p`
 `
 
 const Text2 = styled.p`
-  width:90%;
+  width:80%;
   color:#d9d9d9;
   text-align:left;
   margin-bottom:10px;
@@ -185,5 +186,11 @@ const Text2 = styled.p`
   
 `
 
+const Img = styled.p`
+  width:inherit;
+  color:white;
+  font-size:0.4rem;
+  
+`
 
 export default App;
