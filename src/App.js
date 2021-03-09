@@ -4,12 +4,7 @@ import DatePickers from './date.js'
 import { Button } from '@material-ui/core';
 import styled from 'styled-components'
 import LinearProgress from '@material-ui/core/LinearProgress';
-import $ from 'jquery';
 
-
-$('input.example').on('change', function() {
-  $('input.example').not(this).prop('checked', false);  
-});
 
 function App() {
   const [pic, setPic] = useState(null)
@@ -17,6 +12,19 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [title, setTitle] = useState('')
   const [explanation, setExplanation] = useState('')
+  const [vertical, setVertical] = useState(true)
+  const [horizontal, setHorizontal] = useState(false)
+
+
+  const handleClickVertical = () => {
+    setVertical(true)
+    setHorizontal(false)
+  };
+
+  const handleClickHorizontal = () => {
+    setVertical(false)
+    setHorizontal(true)
+  };
 
   function getPreviousDate(){
     var currentday = date
@@ -106,12 +114,15 @@ function App() {
       <div className="display">
         <div id="ck-button">
           <label>
-              <input type="checkbox" value="1" className="example"/><span>Vertical</span>
+          {pic!=null && <input type="checkbox" value="1" checked={vertical} onClick={handleClickVertical} />}
+          {pic!=null && <span>Vertical</span>}
           </label>
         </div>
+
         <div id="ck-button">
           <label>
-              <input type="checkbox" value="1" className="example"/><span>Horizontal</span>
+            {pic!=null && <input type="checkbox" value="1" checked={horizontal} onClick={handleClickHorizontal}/>}
+            {pic!=null && <span>Horizontal</span>}
           </label>
         </div>
       </div>
