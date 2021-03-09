@@ -129,3 +129,13 @@
   background-color: white;
   color:black;
 }
+
+.range{
+  color:white;
+  border:white 2px soild;
+}
+
+.display{
+  background-color: transparent;
+  border-right:white solid 2px;
+}

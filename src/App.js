@@ -97,6 +97,11 @@ function App() {
         <Button className="search" variant="contained" color="primary" onClick={getDate}>Search</Button>
       </div>
 
+      <button className="display">Vertical</button>
+      <button className="display">Horizontal</button>
+     
+
+
       {loading && <LinearProgress />}
 
       <div className="result">
